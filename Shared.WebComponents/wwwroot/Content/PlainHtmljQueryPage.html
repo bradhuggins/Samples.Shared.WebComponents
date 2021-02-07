@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Plain Html jQuery Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style type="text/css">
+        .redBox {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="contentWrapper"></div>
+    <script type="text/javascript">
+        $.ajax({
+            type: 'GET',
+            url: '/Content/RedBox.html',
+            success: function (data) {
+                $('#contentWrapper').html(data);
+            }
+        });
+    </script>
+
+</body>
+</html>
