@@ -1,24 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    @using Microsoft.Extensions.Configuration
+    @inject IConfiguration _configuration
+    var helper = new Helper(_configuration);
 }
-
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-<div id="divBlueBox"></div>
-<script type="text/javascript">
-        $.ajax({
-            type: 'GET',
-            url: '@Url.Content("~/Components/BlueBox")',
-            success: function (data) {
-                $('#divBlueBox').html(data);
-            }
-        });
-</script>
-
-
+<div id="divBlueBox">@Html.Raw(await helper.BlueBox())</div>
 
 
 <style type="text/css">
@@ -31,11 +22,11 @@
 <div id="divRedBox"></div>
 
 <script type="text/javascript">
-        $.ajax({
-            type: 'GET',
-            url: 'https://bradhuggins.azurewebsites.net/Content/RedBox.html',
-            success: function (data) {
-                $('#divRedBox').html(data);
-            }
-        });
+    $.ajax({
+        type: 'GET',
+        url: 'https://bradhuggins.azurewebsites.net/Content/RedBox.html',
+        success: function (data) {
+            $('#divRedBox').html(data);
+        }
+    });
 </script>
